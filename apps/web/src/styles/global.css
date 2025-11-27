@@ -1,0 +1,16 @@
+@layer theme, base, primereact, components, utilities;
+
+@import "tailwindcss";
+@import "tailwindcss-primeui";
+@import "primereact/resources/themes/fluent-light/theme.css";
+
+body {
+  width: 100vw;
+  height: 100vh;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}

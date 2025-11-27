@@ -1,0 +1,17 @@
+{
+  "name": "paste-it",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "scripts": {
+    "build": "concurrently 'pnpm -F server build' 'pnpm -F web build'",
+    "dev": "concurrently 'pnpm -F server start:dev' 'pnpm -F web dev'"
+  },
+  "packageManager": "pnpm@10.23.0",
+  "dependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@paste-it/web",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "vite build --mode production",
+    "dev": "vite --mode development",
+    "preview": "vite preview",
+    "lint": "biome check --write"
+  },
+  "packageManager": "pnpm@10.23.0",
+  "devDependencies": {
+    "@biomejs/biome": "^2.3.7",
+    "@tailwindcss/vite": "^4.1.17",
+    "@tsconfig/node22": "^22.0.5",
+    "@tsconfig/vite-react": "^7.0.2",
+    "@types/node": "^22.19.1",
+    "@types/react": "^19.2.4",
+    "@types/react-dom": "^19.2.3",
+    "@types/react-router": "^5.1.20",
+    "@vitejs/plugin-react": "^5.1.1",
+    "typescript": "^5.9.3",
+    "vite": "npm:rolldown-vite@7.2.2",
+    "vite-tsconfig-paths": "^5.1.4"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.8",
+    "axios": "^1.13.2",
+    "clsx": "^2.1.1",
+    "primereact": "^10.9.7",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router": "^7.9.5",
+    "tailwind-merge": "^3.4.0",
+    "tailwindcss": "^4.1.17",
+    "tailwindcss-primeui": "^0.6.1"
+  }
+}
