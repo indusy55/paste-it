@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Collection {
+  id String @id @default(uuid())
+  slug String @unique
+  title String
+  description String?
+  cover String?
+  secret_hash String?
+  is_deleted Boolean @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  pastes Paste[] @relation("CollectionPastes")
+}
+
+model Paste {
+  id String @id @default(uuid())
+  slug String @unique
+  title String?
+  content String
+  lang String?
+  attachments String?
+  secret_hash String?
+  expired_at DateTime
+  is_deleted Boolean @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  snapshots Snapshot[]
+  collections Collection[] @relation("CollectionPastes")
+}
+
+model Snapshot {
+  id String @id @default(uuid())
+  paste_id String
+  title String?
+  is_deleted Boolean @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  paste Paste @relation(fields: [paste_id], references: [id])
+}
+
+model File {
+  id String @id @default(uuid())
+  name String
+  original_name String
+  size Int
+  mime_type String
+  file_path String
+  is_deleted Boolean @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model User {
+  id String @id @default(uuid())
+  name String @unique
+  email String @unique
+  password_hash String
+  avatar String
+  is_admin Boolean @default(false)
+  is_deleted Boolean @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Comment {
+  id String @id @default(uuid())
+  user_id String?
+  content String
+  reply_to_id String?
+  
+  reply_to Comment? @relation("CommentReplies", fields: [reply_to_id], references: [id])
+
+  is_deleted Boolean @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  comments Comment[] @relation("CommentReplies")
+}
+
+model Setting {
+  id String @id @default(uuid())
+  name String @unique
+  value String?
+  is_deleted Boolean @default(false)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
