@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseInterceptors } from "@nestjs/common";
-import { UsersService } from "../../domain/users/users.service";
-import { CreateUserDTO, UpdateUserDTO } from "src/domain/users/users.dto";
+import { UsersService } from "./users.service";
+import { CreateUserDTO, UpdateUserDTO } from "src/api/users/users.dto";
 import { ResponseInterceptor } from "../../middleware/interceptors/response.interceptor";
 
 @Controller("/users")

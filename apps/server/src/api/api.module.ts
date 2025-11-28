@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common";
-import { DomainModule } from "src/domain/domain.module";
-import { UsersController } from "./users/users.controller";
+import { UsersModule } from "./users/users.module";
+import { PastesModule } from "./pastes/pastes.module";
 
 @Module({
-    controllers: [UsersController],
-    imports: [DomainModule]
+    imports: [UsersModule, PastesModule],
+    providers: []
 })
 export class ApiModule {}
