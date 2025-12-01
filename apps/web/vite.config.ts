@@ -12,4 +12,14 @@ export default defineConfig({
       projects: ['./tsconfig.app.json'],
     }),
   ],
+  server: {
+    proxy: {
+      [`^/api`]: {
+        target: 'http://localhost:3000',
+        rewrite: (path) => {
+          return path.replace(/^\/api/, '')
+        },
+      }
+    }
+  }
 })

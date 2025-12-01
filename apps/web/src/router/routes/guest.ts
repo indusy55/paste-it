@@ -10,6 +10,10 @@ export const guestRoutes: RouteObject[] = [
         index: true,
         Component: lazy(() => import('@/pages/IndexPage')),
       },
+      {
+        path: 'list',
+        Component: lazy(() => import('@/pages/ListPage'))
+      }
     ],
   },
 ]
